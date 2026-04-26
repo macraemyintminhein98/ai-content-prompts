@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX AI Prompts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-2xl">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">🌟 1-Click AI Prompt Generator 🌟</h1>
+        <p class="text-gray-600 mb-6 text-center">Turn your ideas into cross-platform content prompts instantly.</p>
+        
+        <div class="mb-6">
+            <label for="contentIdea" class="block text-gray-700 text-sm font-bold mb-2">Your Content Idea:</label>
+            <input type="text" id="contentIdea" class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" placeholder="e.g., benefits of solar energy">
+        </div>
+        
+        <button id="generateBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg w-full focus:outline-none focus:shadow-outline transition duration-200">
+            Generate Prompts
+        </button>
+        
+        <div id="output" class="mt-8 space-y-4">
+            <!-- Output will be injected here -->
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-gray-200 text-center text-sm text-gray-500">
+            Brought to you by APEX. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('generateBtn').addEventListener('click', async () => {
+            const idea = document.getElementById('contentIdea').value;
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '<p class="text-center text-gray-500">Generating prompts...</p>';
+
+            try {
+                // In a real application, this would call a backend API
+                // For demo, we'll simulate output
+                const prompts = [
+                    "**Twitter Thread Prompt:** Create a 5-tweet thread explaining 3 key benefits of solar energy for homeowners, ending with a call to action to learn more.",
+                    "**Blog Post Outline Prompt:** Draft a 7-section blog post outline on 'The Ultimate Guide to Solar Energy: Benefits, Installation, and Savings'. Include intro, 3 benefits, installation basics, cost savings, FAQs, and conclusion.",
+                    "**YouTube Video Script Prompt:** Write a 3-minute YouTube script for a video titled 'Go Solar Now! Simple Benefits You Can't Ignore'. Include hook, explanation of 3 benefits, simple cost talk, and a CTA.",
+                    "**LinkedIn Post Prompt:** Compose a professional LinkedIn post about the economic and environmental advantages of adopting solar energy in businesses, targeting small business owners. Include relevant hashtags.",
+                    "**Newsletter Section Prompt:** Design a brief 'Solar Spotlight' section for a weekly newsletter. Highlight a single compelling benefit of solar power and link to further resources."
+                ];
+
+                outputDiv.innerHTML = prompts.map(p => `
+                    <div class="bg-gray-50 p-4 rounded-md border border-gray-200">
+                        <p class="text-gray-800 text-sm leading-relaxed">${p}</p>
+                    </div>
+                `).join('');
+
+            } catch (error) {
+                outputDiv.innerHTML = `<p class="text-center text-red-500">Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
